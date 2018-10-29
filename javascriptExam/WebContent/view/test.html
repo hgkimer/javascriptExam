@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<script src="../js/lib/jquery-3.3.1.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		function test(){
+			alert("함수 시작");
+			//함수의 hoisting
+			//정의된 위치보다 이전에 호출이 가능하다.
+			test1();
+			
+		}
+		test();
+		function test1(){
+			alert("중간지점 함수");
+		}
+		//변수의 hoisting
+		alert(a);
+		var a = test2();
+		function test2(){
+			alert("마지막 함수");
+			return "마지막 함수의 값";
+		}
+		alert(a);
+		//Syntax Error 발생
+		//이처럼 표현식으로 정의되어 어떤 값으로 표현하기 위한 함수는 변수에 할당되는 것 처럼 할당되지 않는 이상
+		//정의된 지점 이전에 접근할 수 없다.
+		//alert(testFunction());
+		var testFunction = function(){
+			return("표현식으로 정의된 함수");
+		}
+		alert(testFunction());
+	});
+	
+</script>
+</body>
+</html>
